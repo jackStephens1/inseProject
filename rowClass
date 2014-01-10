@@ -1,0 +1,166 @@
+import java.util.ArrayList;
+
+/**
+ *
+ * @author
+ */
+public class Row {
+    
+    private String taskNum;
+    private String duration;
+    private String earlyStart;
+    private String lateStart;
+    private String earlyFinish;
+    private String lateFinish;
+    private String slack;
+    private String name;
+    private ArrayList<String> dependsOn;
+ 
+    /**
+    *Default Constructor
+    */
+    public Row()
+    {
+    
+    }
+    
+    /**
+    *Constructor for Row - takes all parameters as String.
+    */
+    public Row(String num, String dur, String earlySt, String lateSt, 
+            String earlyFin, String lateFin, String slk, String nam)
+    {
+        taskNum = num;
+        duration = dur;
+        earlyStart = earlySt;
+        lateStart = lateSt;
+        earlyFinish = earlyFin;
+        lateFinish = lateFin;
+        slack = slk;
+        name = nam;
+        dependsOn = new ArrayList<>();
+    }        
+    
+    /**
+    *Test Constructor for Row (WBT)
+    */
+    public Row(String nam, String taskNo, String dura, String earlySt, String lateSt)
+    {
+        name = nam;
+        taskNum = taskNo;
+        duration = dura;
+        earlyStart = earlySt;
+        lateStart = lateSt;
+    }
+    
+    public void addDependency(String dependency)
+    {
+        dependsOn.add(dependency);
+    }
+    
+    public void removeDependency(int index)
+    {
+        int i = dependsOn.size();
+        if (index >= i) {
+            System.out.println("Index out of bounds");
+        }
+        else {
+            dependsOn.remove(index);
+        }           
+    }              
+    
+    /**
+    *Get Methods for all fields except dependsOn.
+    */
+    public String getTaskNum()
+    {
+        return taskNum;
+    }
+    
+    public String getDuration()
+    {
+        return duration;
+    }
+         
+    public String getEarlyStart()
+    {
+        return earlyStart;
+    }
+        
+    public String getLateStart()
+    {
+        return lateStart;
+    }
+    
+    public String getEarlyFinish()
+    {
+        return earlyFinish;
+    }
+        
+    public String getLateFinish()
+    {
+        return lateFinish;
+    }
+    
+    public String getSlack()
+    {
+        int slk = Integer.valueOf(lateStart) - Integer.valueOf(earlyStart);
+        slack = Integer.toString(slk);       
+        return slack;
+    }
+    
+    public String getName()
+    {
+        return name;
+    }
+       
+    public ArrayList getDependencies()
+    {
+        return dependsOn;
+    }        
+    
+    /**
+    *Set Methods for all fields except dependsOn.
+    */
+    public void setTaskNum(String newNum)
+    {
+        taskNum = newNum;
+    }
+    
+    public void setDuration(String newDur)
+    {
+        duration = newDur;
+    }
+         
+    public void setEarlyStart(String newEStart)
+    {
+        earlyStart = newEStart;
+    }
+        
+    public void setLateStart(String newLStart)
+    {
+        lateStart = newLStart;
+    }
+    
+    public void setEarlyFinish(String newEarlyFin)
+    {
+        earlyFinish = newEarlyFin;
+    }
+         
+    public void setLateFinish(String newLateFin)
+    {
+        lateFinish = newLateFin;
+    }
+    
+    public void setSlack(String newSlack)
+    {
+        slack = newSlack;
+    }
+    
+    public void setName(String newName)
+    {
+        name = newName;
+    }
+    
+    
+}
